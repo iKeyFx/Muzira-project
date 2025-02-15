@@ -17,7 +17,7 @@ const ItemContainer = styled.div`
 `;
 
 function BrowseCategories() {
-  const List = [
+  const genre = [
     "Pop",
     "African",
     "R & B",
@@ -35,7 +35,7 @@ function BrowseCategories() {
     <Container>
       <h4>Browse Categories</h4>
       <ItemContainer>
-        {List.map((list, index) => (
+        {genre.map((list, index) => (
           <BrowseList key={index} title={list} />
         ))}
       </ItemContainer>

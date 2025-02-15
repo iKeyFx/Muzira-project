@@ -89,7 +89,11 @@ function Header() {
         <ProfileDiv>
           <img src={NotificationBell} alt="Bell" />
           <LogoutIcon onClick={handleLogout} />
-          <Profile src={ProfileSample} alt="Profile" />
+          <Profile
+            src={ProfileSample}
+            alt="Profile"
+            onClick={() => navigate("/profile")}
+          />
         </ProfileDiv>
       </Container>
     </StyledHeader>
