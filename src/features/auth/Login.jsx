@@ -218,7 +218,7 @@ function Login() {
               placeholder="Email Address"
               id="email"
               disabled={isPending}
-              value={email}
+              // value={email}
               {...register("email", {
                 required: "Email is required",
                 pattern: {
@@ -236,7 +236,7 @@ function Login() {
               placeholder="Password"
               id="password"
               disabled={isPending}
-              value={password}
+              // value={password}
               {...register("password", {
                 required: "Password is required",
                 minLength: {
