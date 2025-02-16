@@ -194,7 +194,9 @@ function LandingPage() {
               Explore your music activities and generate new and exciting
               playlists without having to open your Muzira app at all
             </p>
-            <Button primary>Continue with Muzira</Button>
+            <Button primary onClick={() => navigate("/sign-up")}>
+              Continue with Muzira
+            </Button>
           </TextContent>
         </ContentWrapper>
 
