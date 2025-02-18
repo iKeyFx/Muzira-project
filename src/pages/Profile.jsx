@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import ProfileAvatar from "../assets/layout/profileAvatar.png";
 import ArtistPlayedItem from "../features/user/ArtistPlayedItem";
+import { useUser } from "../features/auth/useUser";
+import BounceLoader from "../ui/BounceLoader";
 
 const Container = styled.div``;
 const UserContainer = styled.div`
@@ -53,14 +55,21 @@ const RecentPlayConstainer = styled.div`
   }
 `;
 function Profile() {
+  const { user, isPending, isError } = useUser();
+  const { followers, following, profieImage, firstName, lastName } = user;
+
+  if (isPending) return <BounceLoader />;
+  // if (isError && !isPending) return <p>Can't fetch Profile</p>;
   return (
     <Container>
       <UserContainer>
         <ImageContainer>
-          <img src={ProfileAvatar} alt="Avatar" />
+          <img src={ProfileAvatar} alt={`${firstName}Avatar `} />
         </ImageContainer>
         <UserDetails>
-          <h4>Vctoria Adams</h4>
+          <h4>
+            {firstName} {lastName}
+          </h4>
           <UserDetailsInfo>
             <div>
               <p>Playlist</p>

@@ -1,9 +1,9 @@
-// import { useQuery } from "@tanstack/react-query";
-// import { getUser } from "../../services/apiAuth";
+import { useQuery } from "@tanstack/react-query";
+import { getUser } from "../../services/apiAuth";
 
-// function useUser() {
-//   //   const token = localStorage.getItem("authToken");
-//   //   const userId = localStorage.getItem("userId")?.replace(/"/g, "");
+//  function useUser() {
+//   const token = localStorage.getItem("authToken")?.replace(/"/g, "");
+//   const userId = localStorage.getItem("userId")?.replace(/"/g, "");
 
 //   const {
 //     data: user,
@@ -13,15 +13,14 @@
 //   } = useQuery({
 //     queryKey: ["user"],
 //     // queryFn: () => getUser({ token, userId }),
-//     queryFn: () => getUser(token),
+//     queryFn: () => getUser({ token, userId }),
 //     enabled: !!userId && !!token,
 //   });
+//   console.log(user);
 //   return { user, isPending, isError, error };
 // }
 
 // export default useUser;
-
-import { useQuery } from "@tanstack/react-query";
 
 export function useUser() {
   const {
@@ -38,6 +37,6 @@ export function useUser() {
     },
   });
 
-  // console.log(user._id);
+  // console.log(user);
   return { user, isPending, isError };
 }

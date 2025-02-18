@@ -2,6 +2,7 @@ import styled from "styled-components";
 import FaveImage from "../assets/layout/faveScatta.png";
 import MusicComponent from "../components/MusicComponent";
 import PlayBoard from "../ui/PlayBoard";
+import useTrack from "../features/music/useTrack";
 
 const Section = styled.section`
   display: flex;
@@ -10,6 +11,8 @@ const Section = styled.section`
 `;
 function HomePage() {
   const Array = [1, 2, 4, 5];
+  const { data } = useTrack();
+  // console.log(data);
   return (
     <div>
       <Section>

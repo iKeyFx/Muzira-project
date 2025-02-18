@@ -12,8 +12,8 @@ function useLogin() {
     mutationFn: ({ email, password }) => fetchLogin({ email, password }),
 
     onSuccess: (data) => {
-      //   localStorage.setItem("authToken", JSON.stringify(data.data.token));
-      //   localStorage.setItem("userId", JSON.stringify(data.data.user._id));
+      localStorage.setItem("authToken", JSON.stringify(data.data.token));
+      localStorage.setItem("userId", JSON.stringify(data.data.user._id));
       localStorage.setItem("user", JSON.stringify(data.data.user));
 
       queryClient.setQueryData(["user"], data.data.user);

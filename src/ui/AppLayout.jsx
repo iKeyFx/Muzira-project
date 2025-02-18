@@ -4,17 +4,6 @@ import SideBar from "./SideBar";
 import HomePage from "../pages/Homepage";
 import { Outlet } from "react-router";
 
-// const StyledAppLayout = styled.div`
-//   display: grid;
-//   grid-template-columns: 15rem 1fr;
-//   grid-template-rows: auto 1fr;
-//   background-color: var(--color-black);
-//   min-height: 100dvh;
-
-//   @media (max-width: 900px) {
-//     grid-template-columns: 10rem 1fr;
-//   }
-// `;
 const StyledAppLayout = styled.div`
   display: grid;
   grid-template-columns: minmax(5rem, 15rem) 1fr;

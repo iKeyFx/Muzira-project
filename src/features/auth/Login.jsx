@@ -11,6 +11,7 @@ import useLogin from "./useLogin";
 import { useState } from "react";
 import { useUser } from "./useUser";
 import BounceLoader from "../../ui/BounceLoader";
+import useTrack from "../music/useTrack";
 
 export const StyledLogin = styled.div`
   display: flex;
@@ -197,6 +198,7 @@ function Login() {
   const [password] = useState("Test@123");
   const { login, isPending } = useLogin();
   // const { user, isPending: isPending2, isError, error } = useUser();
+
   const navigate = useNavigate();
   const onSubmit = ({ email, password }) => {
     console.log({ email, password });
@@ -218,7 +220,7 @@ function Login() {
               placeholder="Email Address"
               id="email"
               disabled={isPending}
-              // value={email}
+              value={email}
               {...register("email", {
                 required: "Email is required",
                 pattern: {
@@ -236,7 +238,7 @@ function Login() {
               placeholder="Password"
               id="password"
               disabled={isPending}
-              // value={password}
+              value={password}
               {...register("password", {
                 required: "Password is required",
                 minLength: {

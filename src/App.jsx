@@ -21,6 +21,8 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
 import SplashScreen from "./ui/SplashScreen";
 import ProtectedRoute from "./ui/ProtectedRoutes";
+import { AudioProvider } from "./context/AudioContext";
+import Settings from "./pages/Settings";
 
 function App() {
   const queryClient = new QueryClient({
@@ -38,40 +40,44 @@ function App() {
           buttonPosition="bottom-right"
         />
         <GlobalStyles />
+
         <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<LandingPage />} />
-            {/* <Route path="/" element={<Test />} /> */}
-            <Route path="login" element={<Login />} />
-            {/* <Route path="login" element={<SplashScreen />} /> */}
-            <Route path="sign-up" element={<SignUp />} />
+          <AudioProvider>
+            <Routes>
+              <Route path="/" element={<LandingPage />} />
+              {/* <Route path="/" element={<Test />} /> */}
+              <Route path="login" element={<Login />} />
+              {/* <Route path="login" element={<SplashScreen />} /> */}
+              <Route path="sign-up" element={<SignUp />} />
 
-            <Route
-              element={
-                <ProtectedRoute>
-                  <AppLayout />
-                </ProtectedRoute>
-              }
-            >
-              {/* <Route index element={<Navigate replace to="home" />} /> */}
-              <Route path="home" element={<HomePage />} />
-              <Route path="library" element={<Library />}>
-                <Route index element={<Navigate replace to="song" />} />
-                <Route path="song" element={<Songs />} />
-                <Route path="album" element={<AlbumPage />} />
-                <Route path="now-playing" element={<NowPlayingPage />} />
-                <Route path="favourites" element={<FavouritePage />} />
-                <Route path="favourites" element={<FavouritePage />} />
+              <Route
+                element={
+                  <ProtectedRoute>
+                    <AppLayout />
+                  </ProtectedRoute>
+                }
+              >
+                {/* <Route index element={<Navigate replace to="home" />} /> */}
+                <Route path="home" element={<HomePage />} />
+                <Route path="library" element={<Library />}>
+                  <Route index element={<Navigate replace to="song" />} />
+                  <Route path="song" element={<Songs />} />
+                  <Route path="album" element={<AlbumPage />} />
+                  <Route path="now-playing" element={<NowPlayingPage />} />
+                  <Route path="favourites" element={<FavouritePage />} />
+                  <Route path="favourites" element={<FavouritePage />} />
+                </Route>
+                <Route path="playlist" element={<PlayList />} />
+                <Route path="browse" element={<BrowseCategories />} />
+                <Route path="profile" element={<Profile />} />
+                <Route path="favorites" element={<Favourites />} />
+                <Route path="create-playlist" element={<CreatePlayList />} />
+                <Route path="settings" element={<Settings />} />
               </Route>
-              <Route path="playlist" element={<PlayList />} />
-              <Route path="browse" element={<BrowseCategories />} />
-              <Route path="profile" element={<Profile />} />
-              <Route path="favorites" element={<Favourites />} />
-              <Route path="create-playlist" element={<CreatePlayList />} />
-            </Route>
 
-            <Route path="*" element={<PageNotFound />} />
-          </Routes>
+              <Route path="*" element={<PageNotFound />} />
+            </Routes>
+          </AudioProvider>
         </BrowserRouter>
         <Toaster
           position="top-center"

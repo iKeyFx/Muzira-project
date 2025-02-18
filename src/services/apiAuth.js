@@ -65,8 +65,8 @@ export async function getUser({ userId, token }) {
   console.log(token, userId);
   try {
     const res = await fetch(
-      //   `https://music-api-7p93.onrender.com/auth/user/${userId}`,
-      `https://music-api-7p93.onrender.com/auth/user`,
+      `https://music-api-7p93.onrender.com/auth/user/${userId}`,
+      // `https://music-api-7p93.onrender.com/auth/user`,
       {
         method: "GET",
         headers: {

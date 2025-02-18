@@ -17,20 +17,20 @@ const LoaderContainer = styled.div`
 `;
 
 const Dot = styled.div`
-  width: 10px;
-  height: 10px;
+  width: ${(props) => (props.width ? props.width : "10px")};
+  height: ${(props) => (props.width ? props.width : "10px")};
   background-color: var(--color-white);
   border-radius: 50%;
   animation: ${bounce} 1s infinite;
   animation-delay: ${(props) => props.$delay}ms;
 `;
 
-const BounceLoader = () => {
+const BounceLoader = ({ width }) => {
   return (
     <LoaderContainer>
-      <Dot $delay={0} />
-      <Dot $delay={200} />
-      <Dot $delay={400} />
+      <Dot $delay={0} width={width} />
+      <Dot $delay={200} width={width} />
+      <Dot $delay={400} width={width} />
     </LoaderContainer>
   );
 };

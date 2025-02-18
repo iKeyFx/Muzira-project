@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useAudio } from "../../context/AudioContext";
 
 const Container = styled.div`
   display: flex;
@@ -29,17 +30,36 @@ const ProgressBarFill = styled.div`
   border-radius: 5px;
   transition: width 0.3s ease;
 `;
+
+function formatTime(seconds) {
+  if (isNaN(seconds) || seconds === Infinity) return "0:00";
+
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = Math.floor(seconds % 60);
+  return `${minutes}:${remainingSeconds.toString().padStart(2, "0")}`;
+}
+
 function PlayProgress() {
-  const progress = 20;
+  const { currentTime, duration, handleSeek } = useAudio();
+
+  const progressPercentage = duration > 0 ? (currentTime / duration) * 100 : 0;
+
+  const handleProgressClick = (e) => {
+    const progressBar = e.currentTarget;
+    const rect = progressBar.getBoundingClientRect();
+    const clickPosition = (e.clientX - rect.left) / rect.width;
+    const newTime = clickPosition * duration;
+    handleSeek(newTime);
+  };
   return (
     <Container>
-      <span>0:00</span>
-      <ProgressBarWrapper>
+      <span>{formatTime(currentTime)}</span>
+      <ProgressBarWrapper onClick={handleProgressClick}>
         <ProgressBarBackground>
-          <ProgressBarFill style={{ width: `${progress}%` }} />
+          <ProgressBarFill style={{ width: `${progressPercentage}%` }} />
         </ProgressBarBackground>
       </ProgressBarWrapper>
-      <span>4:00</span>
+      <span>{formatTime(duration)}</span>
     </Container>
   );
 }
